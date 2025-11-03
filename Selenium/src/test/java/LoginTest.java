@@ -2,19 +2,18 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import java.util.List;
+import org.testng.annotations.AfterMethod;
 
 public class LoginTest {
     WebDriver driver;
 
-    @BeforeClass
+    @BeforeMethod
     public void setUp() {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.get("https://www.saucedemo.com/");
+        driver.get("https://www.saucedemo.com");
     }
 
     @Test
@@ -31,24 +30,29 @@ public class LoginTest {
     @Test
     public void checkElementsPresence() {
 
-        if (!driver.findElements(By.id("login-button")).isEmpty()) {
+        WebElement loginButton = driver.findElement(By.xpath("//input[@id='login-button']"));
+        if (loginButton.isDisplayed()) {
             System.out.println("Кнопку Login знайдено");
         }
 
-        if (!driver.findElements(By.className("login_logo")).isEmpty()) {
+        WebElement swagLogo = driver.findElement(By.xpath("//div[@class='login_logo']"));
+        if (swagLogo.isDisplayed()) {
             System.out.println("Заголовок Swag Labs знайдено");
         }
 
-        if (!driver.findElements(By.xpath("//input[contains(@class, 'form_input')]")).isEmpty()) {
+        WebElement usernameField = driver.findElement(By.xpath("//input[contains(@class,'form_input')]"));
+        if (usernameField.isDisplayed()) {
             System.out.println("Кнопка Username знайдено");
         }
 
-        if (!driver.findElements(By.cssSelector(".login_logo")).isEmpty()){
-            System.out.println("Pаголовок Swag Labs знайдено");
+        WebElement swagLogoCss = driver.findElement(By.cssSelector(".login_logo"));
+        if (swagLogoCss.isDisplayed()){
+            System.out.println("Заголовок Swag Labs знайдено");
         }
     }
 
-    @AfterClass
+    @AfterMethod
     public void tearDown() {
+        driver.quit();
     }
 }
