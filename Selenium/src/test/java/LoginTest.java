@@ -13,7 +13,7 @@ public class LoginTest {
     public void setUp() {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.get("https://www.saucedemo.com");
+        driver.get("https://www.saucedemo.com/");
     }
 
     @Test
@@ -53,6 +53,5 @@ public class LoginTest {
 
     @AfterMethod
     public void tearDown() {
-        driver.quit();
     }
 }
