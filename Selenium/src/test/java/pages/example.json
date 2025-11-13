@@ -1,0 +1,22 @@
+{
+  "name": "Angelina",
+  "age": 22,
+  "isMarried": false,
+  "lastJobs": ["AQA", "Manual QA", "CTO", "Dev"],
+  "wife": {
+    "gender": "women",
+    "age": 31,
+    "isMarried": true
+  },
+  "children": [
+    {
+      "name": "Jone Dou",
+      "gender": "women",
+      "age": 17
+    },
+    {
+      "gender": "women",
+      "age": 17
+    }
+  ]
+}
